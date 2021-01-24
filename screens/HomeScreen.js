@@ -6,10 +6,12 @@ export default function HomeScreen({navigation}) {
   return (
     <View style={{flex:1,alignItems:'center',justifyContent:'center'}}>
     <Text>Pantalla de Inicio</Text>
+    <View style={{marginTop:20}} >
     <Button
       title='Ir a la pantalla detalles'
       onPress={() => navigation.navigate('Details')}
     ></Button>
+    </View>
     </View>
   );
 }
