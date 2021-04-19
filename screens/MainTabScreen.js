@@ -7,10 +7,15 @@ import { createStackNavigator } from '@react-navigation/stack'
 //native icons
 import Icon from 'react-native-vector-icons/Ionicons'
 //Componentes
-import HomeScreen from './HomeScreen'
+// import HomeScreen from './HomeScreen'
 import DetailScreen from './DetailsScreen'
 import ExploreScreen from './ExploreScreen'
 import ProfileScreen from './ProfileScreen'
+// import InicioDeViaje from "./inicioDeViajeMain/inicioDeViaje"
+import ListaDeChequeo from "./inicioDeViajeMain/listaDeChequeo"
+import ViajeEnProceso from './inicioDeViajeMain/viajeEnProceso'
+import InicioDeViaje from './inicioDeViajeMain/inicioDeViaje'
+
 
 
 const DetailsStack = createStackNavigator()
@@ -23,51 +28,55 @@ export default function MainTableScreen(){
    return (
      <Tab.Navigator
       initialRouteName="Home"
-      activeColor="black"
-      style={{ backgroundColor: 'tomato' }}
+      activeColor="blue"
+      // style={{ backgroundColor: 'tomato' }}
     >
       <Tab.Screen
-        name="Home"
-        component={HomeStackScreen}
+        name="Inicio"
+        component={InicioDeViaje}
         options={{
           tabBarLabel: 'Inicio',
-          tabBarColor: '#009387',
+          tabBarColor: 'white',
           tabBarIcon: ({ color }) => (
-           <Icon name="home" color={color} size={26} />
+           <Icon name="home" color={'black'} size={26} />
           ),
         }}
       />
       <Tab.Screen
-        name="Details"
-        component={DetailsStackScreen}
+       name="Home"
+        component={ListaDeChequeo}
+
         options={{
-          tabBarLabel: 'notificaciones',
-          tabBarColor: '#1f65ff',
+          tabBarLabel: 'destinos',
+          tabBarColor: 'white',
           tabBarIcon: ({ color }) => (
-            <Icon name="notifications" color={color} size={26} />
+            <MaterialCommunityIcons name="clipboard-list" color={'black'} size={26} />
+          ),
+        }}
+      />
+            <Tab.Screen
+        name="Proceso"
+        component={ViajeEnProceso}
+        options={{
+          tabBarLabel: 'Viaje en Curso',
+          tabBarColor: 'white',
+          tabBarIcon: ({ color }) => (
+            <MaterialCommunityIcons name="truck-check-outline" color={'black'} size={26} />
           ),
         }}
       />
       <Tab.Screen
         name="Profile"
+   
         component={ProfileScreen}
         options={{
-          tabBarLabel: 'Mi perfil',
-          tabBarColor: '#694fad',
+          tabBarLabel: 'Maps',
+          tabBarColor: 'white',
+          
           tabBarIcon: ({ color }) => (
-            <Icon name="person" color={color} size={26} />
+            <MaterialCommunityIcons name="google-maps" color={'black'} size={26} />
           ),
-        }}
-      />
-      <Tab.Screen
-        name="Explore"
-        component={ExploreScreen}
-        options={{
-          tabBarLabel: 'Explorar',
-          tabBarColor: '#d02860',
-          tabBarIcon: ({ color }) => (
-            <Icon name="aperture" color={color} size={26} />
-          ),
+          
         }}
       />
     </Tab.Navigator>
@@ -107,20 +116,20 @@ export default function MainTableScreen(){
    return (
    <DetailsStack.Navigator screenOptions={{
        headerStyle:{
-       backgroundColor:'#009387',
+       backgroundColor:'#141414',
      },
-     headerTintColor:'white',
+     headerTintColor:'blue',
      headerTitleStyle: {
        fontWeight: 'bold'
      }
      }} >
-       <DetailsStack.Screen name="Details" component={DetailScreen}
+       <DetailsStack.Screen name="Inicio de Viaje" component={DetailScreen}
        options={{
          headerLeft: () => (
            <Icon.Button
            name='menu'
            size={22}
-           backgroundColor='#009387'
+           backgroundColor='#141414'
            onPress={() => navigation.openDrawer()}>
            </Icon.Button>
           )
@@ -129,6 +138,38 @@ export default function MainTableScreen(){
      </DetailsStack.Navigator>
    )
  }
+
+
+
+
+
+ function DestinosStackScreen({navigation}) {
+  return (
+  <DestinosStack.Navigator screenOptions={{
+      headerStyle:{
+      backgroundColor:'#141414',
+    },
+    headerTintColor:'blue',
+    headerTitleStyle: {
+      fontWeight: 'bold'
+    }
+    }} >
+      <DestinosStack.Screen name="Destinos" component={ListaDeChequeo}
+      options={{
+        headerLeft: () => (
+          <Icon.Button
+          name='menu'
+          size={22}
+          backgroundColor='#141414'
+          onPress={() => navigation.openDrawer()}>
+          </Icon.Button>
+         )
+
+      }} />
+    </DestinosStack.Navigator>
+  )
+}
+
 
 
  //Material-Bottom

@@ -7,11 +7,19 @@ import {
   TouchableOpacity,
 } from "react-native";
 import FontAwesome from "react-native-vector-icons/FontAwesome";
+import Icon from 'react-native-vector-icons/Ionicons'
 
 
-export default function DetailsScreen({navigation}) {
+const InicioDeViaje = ({navigation}) => {
   return (
-    <View style={styles.container}>
+    <>
+      <View style={styles.container}>
+      <Icon.Button
+          name='menu'
+          size={22}
+          backgroundColor='#141414'
+          onPress={() => navigation.openDrawer()}>
+          </Icon.Button>
         <ImageBackground
           style={{ width: 360, height: 120, marginTop: "30px" }}
           source={"https://i.ibb.co/Gd5rmBK/vosLogo.png"}
@@ -32,10 +40,11 @@ export default function DetailsScreen({navigation}) {
           <Text style={styles.textConfirm}>Confirmar inicio de Viaje ?</Text>
         </View>
         <View style={styles.btnContainer}>
-          <TouchableOpacity 
-                onPress={() => navigation.navigate('Home')}
-          style={styles.btnIniciodeViaje}>
+          <TouchableOpacity
+               onPress={() => navigation.navigate('Home')}
+           style={styles.btnIniciodeViaje}>
             {" "}
+            
             <FontAwesome
               name="check"
               size={40}
@@ -59,11 +68,9 @@ export default function DetailsScreen({navigation}) {
           </TouchableOpacity>
         </View>
       </View>
-
+    </>
   );
-}
-
-
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -123,3 +130,7 @@ const styles = StyleSheet.create({
     height:'46px'
   },
 });
+
+export default InicioDeViaje;
+/*======================Paquetes======================  */
+//  npm i react-native-vector-icons
